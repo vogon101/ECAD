@@ -1,0 +1,17 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst clarvi_soc.clk_50 -pg 1 -lvl 1 -y 30
+preplace inst clarvi_soc.video_memory -pg 1 -lvl 4 -y 30
+preplace inst clarvi_soc -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst clarvi_soc.pll -pg 1 -lvl 2 -y 30
+preplace inst clarvi_soc.PixelStream_0 -pg 1 -lvl 3 -y 70
+preplace netloc FAN_OUT<net_container>clarvi_soc</net_container>(MASTER)clk_50.clk_reset,(SLAVE)pll.reset,(SLAVE)PixelStream_0.clockreset_reset,(SLAVE)video_memory.reset1) 1 1 3 390 100 570 60 NJ
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)PixelStream_0.conduit_end_0,(SLAVE)clarvi_soc.pixelstream_0_conduit_end_0) 1 0 3 NJ 120 NJ 120 NJ
+preplace netloc FAN_OUT<net_container>clarvi_soc</net_container>(MASTER)pll.outclk0,(SLAVE)PixelStream_0.clockreset,(SLAVE)video_memory.clk1) 1 2 2 590 40 NJ
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)clarvi_soc.reset,(SLAVE)clk_50.clk_in_reset) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>clarvi_soc</net_container>(MASTER)PixelStream_0.master_burstreads,(SLAVE)video_memory.s1) 1 3 1 850
+preplace netloc POINT_TO_POINT<net_container>clarvi_soc</net_container>(SLAVE)PixelStream_0.video,(MASTER)pll.outclk1) 1 2 1 550
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)clk_50.clk_in,(SLAVE)clarvi_soc.clk) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>clarvi_soc</net_container>(MASTER)clk_50.clk,(SLAVE)pll.refclk) 1 1 1 N
+levelinfo -pg 1 0 180 1000
+levelinfo -hier clarvi_soc 190 220 420 620 890 990

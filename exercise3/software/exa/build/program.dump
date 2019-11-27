@@ -1,0 +1,99 @@
+
+build/program.elf:     file format elf32-littleriscv
+
+Contents of section .text.init:
+ 0000 17010100 130101fe 97020000 93824201  ..............B.
+ 0010 73905230 ef00000c 73000000 6f000000  s.R0....s...o...
+Contents of section .text:
+ 0020 130101fe 23201100 1305c000 93054000  ....# ........@.
+ 0030 ef004004 7310257b 7390257b 1305d005  ..@.s.%{s.%{....
+ 0040 93057000 ef000003 7310257b 7390257b  ..p.....s.%{s.%{
+ 0050 37553412 13658567 9305f00f ef008001  7U4..e.g........
+ 0060 7310257b 7390257b 83200100 13010102  s.%{s.%{. ......
+ 0070 67800000 130101fe 23201100 93020000  g.......# ......
+ 0080 13030000 93030002 63880302 9383f3ff  ........c.......
+ 0090 13131300 335e7500 137e1e00 3303c301  ....3^u..~..3...
+ 00a0 634ab300 3303b340 130e1000 331e7e00  cJ..3..@....3.~.
+ 00b0 b382c201 6ff05ffd 13050000 93050000  ....o._.........
+ 00c0 33055000 b3056000 83200100 13010102  3.P...`.. ......
+ 00d0 67800000 130101fe 23201100 eff05ff4  g.......# ...._.
+ 00e0 83200100 13010102 67800000           . ......g...    
+
+Disassembly of section .text.init:
+
+00000000 <entry>:
+   0:	00010117          	auipc	sp,0x10
+   4:	fe010113          	addi	sp,sp,-32 # ffe0 <main+0xff0c>
+   8:	00000297          	auipc	t0,0x0
+   c:	01428293          	addi	t0,t0,20 # 1c <end>
+  10:	30529073          	csrw	mtvec,t0
+  14:	0c0000ef          	jal	ra,d4 <main>
+  18:	00000073          	ecall
+
+0000001c <end>:
+  1c:	0000006f          	j	1c <end>
+
+Disassembly of section .text:
+
+00000020 <myfunction>:
+  20:	fe010113          	addi	sp,sp,-32
+  24:	00112023          	sw	ra,0(sp)
+  28:	00c00513          	li	a0,12
+  2c:	00400593          	li	a1,4
+  30:	044000ef          	jal	ra,74 <div>
+  34:	7b251073          	csrw	dscratch,a0
+  38:	7b259073          	csrw	dscratch,a1
+  3c:	05d00513          	li	a0,93
+  40:	00700593          	li	a1,7
+  44:	030000ef          	jal	ra,74 <div>
+  48:	7b251073          	csrw	dscratch,a0
+  4c:	7b259073          	csrw	dscratch,a1
+  50:	12345537          	lui	a0,0x12345
+  54:	67856513          	ori	a0,a0,1656
+  58:	0ff00593          	li	a1,255
+  5c:	018000ef          	jal	ra,74 <div>
+  60:	7b251073          	csrw	dscratch,a0
+  64:	7b259073          	csrw	dscratch,a1
+  68:	00012083          	lw	ra,0(sp)
+  6c:	02010113          	addi	sp,sp,32
+  70:	00008067          	ret
+
+00000074 <div>:
+  74:	fe010113          	addi	sp,sp,-32
+  78:	00112023          	sw	ra,0(sp)
+  7c:	00000293          	li	t0,0
+  80:	00000313          	li	t1,0
+  84:	02000393          	li	t2,32
+
+00000088 <startloop>:
+  88:	02038863          	beqz	t2,b8 <endloop>
+  8c:	fff38393          	addi	t2,t2,-1
+  90:	00131313          	slli	t1,t1,0x1
+  94:	00755e33          	srl	t3,a0,t2
+  98:	001e7e13          	andi	t3,t3,1
+  9c:	01c30333          	add	t1,t1,t3
+  a0:	00b34a63          	blt	t1,a1,b4 <endif>
+  a4:	40b30333          	sub	t1,t1,a1
+  a8:	00100e13          	li	t3,1
+  ac:	007e1e33          	sll	t3,t3,t2
+  b0:	01c282b3          	add	t0,t0,t3
+
+000000b4 <endif>:
+  b4:	fd5ff06f          	j	88 <startloop>
+
+000000b8 <endloop>:
+  b8:	00000513          	li	a0,0
+  bc:	00000593          	li	a1,0
+  c0:	00500533          	add	a0,zero,t0
+  c4:	006005b3          	add	a1,zero,t1
+  c8:	00012083          	lw	ra,0(sp)
+  cc:	02010113          	addi	sp,sp,32
+  d0:	00008067          	ret
+
+000000d4 <main>:
+  d4:	fe010113          	addi	sp,sp,-32
+  d8:	00112023          	sw	ra,0(sp)
+  dc:	f45ff0ef          	jal	ra,20 <myfunction>
+  e0:	00012083          	lw	ra,0(sp)
+  e4:	02010113          	addi	sp,sp,32
+  e8:	00008067          	ret
