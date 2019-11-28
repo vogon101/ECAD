@@ -9,59 +9,27 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element EightBitsToSevenSeg_left_1
-   {
-      datum _sortIndex
-      {
-         value = "12";
-         type = "int";
-      }
-   }
-   element EightBitsToSevenSeg_left_2
-   {
-      datum _sortIndex
-      {
-         value = "13";
-         type = "int";
-      }
-   }
-   element EightBitsToSevenSeg_left_3
-   {
-      datum _sortIndex
-      {
-         value = "14";
-         type = "int";
-      }
-   }
-   element EightBitsToSevenSeg_right_1
-   {
-      datum _sortIndex
-      {
-         value = "16";
-         type = "int";
-      }
-   }
-   element EightBitsToSevenSeg_right_2
-   {
-      datum _sortIndex
-      {
-         value = "17";
-         type = "int";
-      }
-   }
-   element EightBitsToSevenSeg_right_3
-   {
-      datum _sortIndex
-      {
-         value = "18";
-         type = "int";
-      }
-   }
    element PixelStream_0
    {
       datum _sortIndex
       {
          value = "3";
+         type = "int";
+      }
+   }
+   element ShiftRegCtl_0
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element buttons_pio
+   {
+      datum _sortIndex
+      {
+         value = "8";
          type = "int";
       }
    }
@@ -81,6 +49,14 @@
          type = "String";
       }
    }
+   element clarvi_soc
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element clk_50
    {
       datum _sortIndex
@@ -89,7 +65,7 @@
          type = "int";
       }
    }
-   element in_buttons
+   element hex_converter_0
    {
       datum _sortIndex
       {
@@ -97,19 +73,27 @@
          type = "int";
       }
    }
-   element in_left_dial
+   element hex_pio
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "7";
          type = "int";
       }
    }
-   element in_right_dial
+   element led_pio
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "6";
+         type = "int";
+      }
+   }
+   element leftdial_pio
+   {
+      datum _sortIndex
+      {
+         value = "11";
          type = "int";
       }
    }
@@ -121,22 +105,6 @@
          type = "int";
       }
    }
-   element out_hex
-   {
-      datum _sortIndex
-      {
-         value = "7";
-         type = "int";
-      }
-   }
-   element out_leds
-   {
-      datum _sortIndex
-      {
-         value = "6";
-         type = "int";
-      }
-   }
    element pll
    {
       datum _sortIndex
@@ -145,19 +113,27 @@
          type = "int";
       }
    }
-   element splitter_left
+   element rightdial_pio
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "13";
          type = "int";
       }
    }
-   element splitter_right
+   element rotary_left
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "12";
+         type = "int";
+      }
+   }
+   element rotary_right
+   {
+      datum _sortIndex
+      {
+         value = "14";
          type = "int";
       }
    }
@@ -200,58 +176,51 @@
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_50.clk_in" type="clock" dir="end" />
  <interface
-   name="eightbitstosevenseg_left_1_led_pins"
-   internal="EightBitsToSevenSeg_left_1.led_pins"
+   name="hex_converter_0_conduit_in"
+   internal="hex_converter_0.conduit_in"
    type="conduit"
    dir="end" />
  <interface
-   name="eightbitstosevenseg_left_2_led_pins"
-   internal="EightBitsToSevenSeg_left_2.led_pins"
+   name="hex_converter_0_conduit_out"
+   internal="hex_converter_0.conduit_out" />
+ <interface
+   name="hex_converter_0_conduit_out_1"
+   internal="hex_converter_0.conduit_out_1"
    type="conduit"
    dir="end" />
  <interface
-   name="eightbitstosevenseg_left_3_led_pins"
-   internal="EightBitsToSevenSeg_left_3.led_pins"
+   name="hex_converter_0_conduit_out_2"
+   internal="hex_converter_0.conduit_out_2"
    type="conduit"
    dir="end" />
  <interface
-   name="eightbitstosevenseg_right_1_led_pins"
-   internal="EightBitsToSevenSeg_right_1.led_pins"
+   name="hex_converter_0_conduit_out_3"
+   internal="hex_converter_0.conduit_out_3"
    type="conduit"
    dir="end" />
  <interface
-   name="eightbitstosevenseg_right_2_led_pins"
-   internal="EightBitsToSevenSeg_right_2.led_pins"
+   name="hex_converter_0_conduit_out_4"
+   internal="hex_converter_0.conduit_out_4"
    type="conduit"
    dir="end" />
  <interface
-   name="eightbitstosevenseg_right_3_led_pins"
-   internal="EightBitsToSevenSeg_right_3.led_pins"
+   name="hex_converter_0_conduit_out_5"
+   internal="hex_converter_0.conduit_out_5"
    type="conduit"
    dir="end" />
  <interface
-   name="in_buttons_external_connection"
-   internal="in_buttons.external_connection"
+   name="hex_converter_0_conduit_out_6"
+   internal="hex_converter_0.conduit_out_6"
    type="conduit"
    dir="end" />
  <interface
-   name="in_left_dial_external_connection"
-   internal="in_left_dial.external_connection"
+   name="hex_pio_external_connection"
+   internal="hex_pio.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="in_right_dial_external_connection"
-   internal="in_right_dial.external_connection"
-   type="conduit"
-   dir="end" />
- <interface
-   name="out_hex_external_connection"
-   internal="out_hex.external_connection"
-   type="conduit"
-   dir="end" />
- <interface
-   name="out_leds_external_connection"
-   internal="out_leds.external_connection"
+   name="led_pio_external_connection"
+   internal="led_pio.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -261,75 +230,34 @@
    dir="end" />
  <interface name="reset" internal="clk_50.clk_in_reset" type="reset" dir="end" />
  <interface
-   name="splitter_left_cond_in"
-   internal="splitter_left.cond_in"
+   name="rotary_left_rotary_event"
+   internal="rotary_left.rotary_event"
    type="conduit"
    dir="end" />
  <interface
-   name="splitter_right_cond_in"
-   internal="splitter_right.cond_in"
+   name="rotary_left_rotary_in"
+   internal="rotary_left.rotary_in"
    type="conduit"
    dir="end" />
- <module
-   name="EightBitsToSevenSeg_left_1"
-   kind="EightBitsToSevenSeg"
-   version="1.0"
-   enabled="1" />
- <module
-   name="EightBitsToSevenSeg_left_2"
-   kind="EightBitsToSevenSeg"
-   version="1.0"
-   enabled="1" />
- <module
-   name="EightBitsToSevenSeg_left_3"
-   kind="EightBitsToSevenSeg"
-   version="1.0"
-   enabled="1" />
- <module
-   name="EightBitsToSevenSeg_right_1"
-   kind="EightBitsToSevenSeg"
-   version="1.0"
-   enabled="1" />
- <module
-   name="EightBitsToSevenSeg_right_2"
-   kind="EightBitsToSevenSeg"
-   version="1.0"
-   enabled="1" />
- <module
-   name="EightBitsToSevenSeg_right_3"
-   kind="EightBitsToSevenSeg"
-   version="1.0"
-   enabled="1" />
+ <interface
+   name="rotary_right_rotary_event"
+   internal="rotary_right.rotary_event"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="rotary_right_rotary_in"
+   internal="rotary_right.rotary_in"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="shiftregctl_0_shiftreg_ext"
+   internal="ShiftRegCtl_0.shiftreg_ext"
+   type="conduit"
+   dir="end" />
  <module name="PixelStream_0" kind="PixelStream" version="1.0" enabled="1" />
- <module name="clarvi_0" kind="clarvi" version="1.0" enabled="1">
-  <parameter name="AUTO_INTERRUPT_RECEIVER_0_INTERRUPTS_USED" value="0" />
-  <parameter name="DATA_ADDR_WIDTH" value="29" />
-  <parameter name="DEFAULT_TRAP_VECTOR" value="0" />
-  <parameter name="INITIAL_PC" value="0" />
-  <parameter name="INSTR_ADDR_WIDTH" value="14" />
- </module>
- <module name="clk_50" kind="clock_source" version="16.1" enabled="1">
-  <parameter name="clockFrequency" value="50000000" />
-  <parameter name="clockFrequencyKnown" value="true" />
-  <parameter name="inputClockFrequency" value="0" />
-  <parameter name="resetSynchronousEdges" value="NONE" />
- </module>
- <module name="in_buttons" kind="altera_avalon_pio" version="16.1" enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="16" />
- </module>
+ <module name="ShiftRegCtl_0" kind="ShiftRegCtl" version="1.0" enabled="1" />
  <module
-   name="in_left_dial"
+   name="buttons_pio"
    kind="altera_avalon_pio"
    version="16.1"
    enabled="1">
@@ -344,10 +272,52 @@
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="8" />
+  <parameter name="width" value="16" />
+ </module>
+ <module name="clarvi_0" kind="clarvi" version="1.0" enabled="1">
+  <parameter name="AUTO_INTERRUPT_RECEIVER_0_INTERRUPTS_USED" value="0" />
+  <parameter name="DATA_ADDR_WIDTH" value="29" />
+  <parameter name="DEFAULT_TRAP_VECTOR" value="0" />
+  <parameter name="INITIAL_PC" value="0" />
+  <parameter name="INSTR_ADDR_WIDTH" value="14" />
+ </module>
+ <module name="clk_50" kind="clock_source" version="16.1" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module name="hex_converter_0" kind="hex_converter" version="1.0" enabled="1" />
+ <module name="hex_pio" kind="altera_avalon_pio" version="16.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="24" />
+ </module>
+ <module name="led_pio" kind="altera_avalon_pio" version="16.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="10" />
  </module>
  <module
-   name="in_right_dial"
+   name="leftdial_pio"
    kind="altera_avalon_pio"
    version="16.1"
    enabled="1">
@@ -370,7 +340,7 @@
    version="16.1"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">$${FILENAME}_onchip_memory2_0</parameter>
+  <parameter name="autoInitializationFileName">clarvi_soc_onchip_memory2_0</parameter>
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="32" />
@@ -395,34 +365,6 @@
   <parameter name="useNonDefaultInitFile" value="true" />
   <parameter name="useShallowMemBlocks" value="false" />
   <parameter name="writable" value="true" />
- </module>
- <module name="out_hex" kind="altera_avalon_pio" version="16.1" enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="24" />
- </module>
- <module name="out_leds" kind="altera_avalon_pio" version="16.1" enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="10" />
  </module>
  <module name="pll" kind="altera_pll" version="16.1" enabled="1">
   <parameter name="debug_print_output" value="false" />
@@ -627,8 +569,26 @@
   <parameter name="gui_switchover_mode">Automatic Switchover</parameter>
   <parameter name="gui_use_locked" value="false" />
  </module>
- <module name="splitter_left" kind="splitter" version="1.0" enabled="1" />
- <module name="splitter_right" kind="splitter" version="1.0" enabled="1" />
+ <module
+   name="rightdial_pio"
+   kind="altera_avalon_pio"
+   version="16.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="8" />
+ </module>
+ <module name="rotary_left" kind="RotaryCtl" version="1.0" enabled="1" />
+ <module name="rotary_right" kind="RotaryCtl" version="1.0" enabled="1" />
  <module
    name="video_memory"
    kind="altera_avalon_onchip_memory2"
@@ -670,38 +630,6 @@
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="avalon" version="16.1" start="clarvi_0.main" end="out_hex.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04000080" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.1"
-   start="clarvi_0.main"
-   end="in_left_dial.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04000100" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.1"
-   start="clarvi_0.main"
-   end="in_right_dial.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04000200" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.1"
-   start="clarvi_0.main"
-   end="in_buttons.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04000300" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
  <connection
    kind="avalon"
    version="16.1"
@@ -720,9 +648,41 @@
   <parameter name="baseAddress" value="0x08000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="avalon" version="16.1" start="clarvi_0.main" end="out_leds.s1">
+ <connection kind="avalon" version="16.1" start="clarvi_0.main" end="led_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x04000000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection kind="avalon" version="16.1" start="clarvi_0.main" end="hex_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x04000080" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.1"
+   start="clarvi_0.main"
+   end="rightdial_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x04000200" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.1"
+   start="clarvi_0.main"
+   end="buttons_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x04000300" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.1"
+   start="clarvi_0.main"
+   end="leftdial_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x04000100" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -744,19 +704,19 @@
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="clock" version="16.1" start="clk_50.clk" end="pll.refclk" />
- <connection kind="clock" version="16.1" start="pll.outclk0" end="out_hex.clk" />
+ <connection kind="clock" version="16.1" start="pll.outclk0" end="led_pio.clk" />
+ <connection kind="clock" version="16.1" start="pll.outclk0" end="hex_pio.clk" />
  <connection
    kind="clock"
    version="16.1"
    start="pll.outclk0"
-   end="in_left_dial.clk" />
+   end="rightdial_pio.clk" />
+ <connection kind="clock" version="16.1" start="pll.outclk0" end="buttons_pio.clk" />
  <connection
    kind="clock"
    version="16.1"
    start="pll.outclk0"
-   end="in_right_dial.clk" />
- <connection kind="clock" version="16.1" start="pll.outclk0" end="in_buttons.clk" />
- <connection kind="clock" version="16.1" start="pll.outclk0" end="out_leds.clk" />
+   end="leftdial_pio.clk" />
  <connection
    kind="clock"
    version="16.1"
@@ -777,32 +737,22 @@
    kind="clock"
    version="16.1"
    start="pll.outclk0"
-   end="EightBitsToSevenSeg_left_2.clock" />
+   end="hex_converter_0.clock" />
  <connection
    kind="clock"
    version="16.1"
    start="pll.outclk0"
-   end="EightBitsToSevenSeg_left_3.clock" />
+   end="rotary_right.clock" />
  <connection
    kind="clock"
    version="16.1"
    start="pll.outclk0"
-   end="EightBitsToSevenSeg_right_1.clock" />
+   end="rotary_left.clock" />
  <connection
    kind="clock"
    version="16.1"
    start="pll.outclk0"
-   end="EightBitsToSevenSeg_right_2.clock" />
- <connection
-   kind="clock"
-   version="16.1"
-   start="pll.outclk0"
-   end="EightBitsToSevenSeg_right_3.clock" />
- <connection
-   kind="clock"
-   version="16.1"
-   start="pll.outclk0"
-   end="EightBitsToSevenSeg_left_1.clock" />
+   end="ShiftRegCtl_0.clock_sink" />
  <connection
    kind="clock"
    version="16.1"
@@ -816,8 +766,8 @@
  <connection
    kind="conduit"
    version="16.1"
-   start="splitter_right.cond_out1"
-   end="EightBitsToSevenSeg_right_1.data_in">
+   start="ShiftRegCtl_0.buttons"
+   end="buttons_pio.external_connection">
   <parameter name="endPort" value="" />
   <parameter name="endPortLSB" value="0" />
   <parameter name="startPort" value="" />
@@ -827,8 +777,8 @@
  <connection
    kind="conduit"
    version="16.1"
-   start="splitter_left.cond_out1"
-   end="EightBitsToSevenSeg_left_1.data_in">
+   start="rightdial_pio.external_connection"
+   end="rotary_right.rotary_pos">
   <parameter name="endPort" value="" />
   <parameter name="endPortLSB" value="0" />
   <parameter name="startPort" value="" />
@@ -838,41 +788,8 @@
  <connection
    kind="conduit"
    version="16.1"
-   start="splitter_left.cond_out2"
-   end="EightBitsToSevenSeg_left_2.data_in">
-  <parameter name="endPort" value="" />
-  <parameter name="endPortLSB" value="0" />
-  <parameter name="startPort" value="" />
-  <parameter name="startPortLSB" value="0" />
-  <parameter name="width" value="0" />
- </connection>
- <connection
-   kind="conduit"
-   version="16.1"
-   start="splitter_right.cond_out2"
-   end="EightBitsToSevenSeg_right_2.data_in">
-  <parameter name="endPort" value="" />
-  <parameter name="endPortLSB" value="0" />
-  <parameter name="startPort" value="" />
-  <parameter name="startPortLSB" value="0" />
-  <parameter name="width" value="0" />
- </connection>
- <connection
-   kind="conduit"
-   version="16.1"
-   start="splitter_left.cond_out3"
-   end="EightBitsToSevenSeg_left_3.data_in">
-  <parameter name="endPort" value="" />
-  <parameter name="endPortLSB" value="0" />
-  <parameter name="startPort" value="" />
-  <parameter name="startPortLSB" value="0" />
-  <parameter name="width" value="0" />
- </connection>
- <connection
-   kind="conduit"
-   version="16.1"
-   start="EightBitsToSevenSeg_right_3.data_in"
-   end="splitter_right.cond_out3">
+   start="rotary_left.rotary_pos"
+   end="leftdial_pio.external_connection">
   <parameter name="endPort" value="" />
   <parameter name="endPortLSB" value="0" />
   <parameter name="startPort" value="" />
@@ -894,57 +811,37 @@
    kind="reset"
    version="16.1"
    start="clk_50.clk_reset"
-   end="in_buttons.reset" />
+   end="buttons_pio.reset" />
  <connection
    kind="reset"
    version="16.1"
    start="clk_50.clk_reset"
-   end="in_right_dial.reset" />
+   end="rightdial_pio.reset" />
  <connection
    kind="reset"
    version="16.1"
    start="clk_50.clk_reset"
-   end="in_left_dial.reset" />
+   end="hex_pio.reset" />
  <connection
    kind="reset"
    version="16.1"
    start="clk_50.clk_reset"
-   end="out_hex.reset" />
+   end="led_pio.reset" />
  <connection
    kind="reset"
    version="16.1"
    start="clk_50.clk_reset"
-   end="out_leds.reset" />
+   end="leftdial_pio.reset" />
  <connection
    kind="reset"
    version="16.1"
    start="clk_50.clk_reset"
-   end="EightBitsToSevenSeg_left_3.reset" />
+   end="hex_converter_0.reset" />
  <connection
    kind="reset"
    version="16.1"
    start="clk_50.clk_reset"
-   end="EightBitsToSevenSeg_left_2.reset" />
- <connection
-   kind="reset"
-   version="16.1"
-   start="clk_50.clk_reset"
-   end="EightBitsToSevenSeg_right_1.reset" />
- <connection
-   kind="reset"
-   version="16.1"
-   start="clk_50.clk_reset"
-   end="EightBitsToSevenSeg_right_2.reset" />
- <connection
-   kind="reset"
-   version="16.1"
-   start="clk_50.clk_reset"
-   end="EightBitsToSevenSeg_right_3.reset" />
- <connection
-   kind="reset"
-   version="16.1"
-   start="clk_50.clk_reset"
-   end="EightBitsToSevenSeg_left_1.reset" />
+   end="ShiftRegCtl_0.reset" />
  <connection
    kind="reset"
    version="16.1"
@@ -960,6 +857,16 @@
    version="16.1"
    start="clk_50.clk_reset"
    end="onchip_memory2_0.reset2" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_50.clk_reset"
+   end="rotary_left.reset_sink" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_50.clk_reset"
+   end="rotary_right.reset_sink" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

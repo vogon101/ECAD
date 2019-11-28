@@ -236,15 +236,15 @@ module clarvi_fpga(
 		LCD_ON = 1'b1;
 	end
 
-   clarvi_soc qsys0 (
+  /* clarvi_soc qsys0 (
         .clk_clk                                   (CLOCK_50),
         .reset_reset_n                             (KEY[0]),
-        .out_leds_external_connection_export       (LEDR),
-        //.buttonsctl_0_shiftreg_in_shiftreg_in     (SHIFT_OUT),
-        //.buttonsctl_0_shiftreg_out_shiftreg_loadn (SHIFT_LOAD),
-        //.buttonsctl_0_shiftreg_out_shiftreg_clk   (SHIFT_CLKIN),
-        //.rotaryctl_left_rotary_in_rotary_in       (DIALL),
-        //.rotaryctl_right_rotary_in_rotary_in      (DIALR),
+        .pio_led_export                            (LEDR),
+        .buttonsctl_0_shiftreg_in_shiftreg_in     (SHIFT_OUT),
+        .buttonsctl_0_shiftreg_out_shiftreg_loadn (SHIFT_LOAD),
+        .buttonsctl_0_shiftreg_out_shiftreg_clk   (SHIFT_CLKIN),
+        .rotaryctl_left_rotary_in_rotary_in       (DIALL),
+        .rotaryctl_right_rotary_in_rotary_in      (DIALR),
         .pixelstream_0_conduit_end_0_lcd_red   (LCD_R),   // pixelstream_0_conduit_end_0.lcd_red
         .pixelstream_0_conduit_end_0_lcd_green (LCD_G), //                            .lcd_green
         .pixelstream_0_conduit_end_0_lcd_blue  (LCD_B),  //                            .lcd_blue
@@ -253,42 +253,58 @@ module clarvi_fpga(
         .pixelstream_0_conduit_end_0_lcd_de    (LCD_DEN),    //                            .lcd_de
         .pixelstream_0_conduit_end_0_lcd_dclk    (LCD_DCLK),    //                            .lcd_dclk
 //        .pixelstream_0_conduit_end_0_lcd_dclk_en (<connected-to-pixelstream_0_conduit_end_0_lcd_dclk_en>), //                            .lcd_dclk_en
-	
-    );
+    );*/
+	logic [23:0] hex_cond;
 
 /*
     clarvi_soc u0 (
-        .clk_clk                                   (<connected-to-clk_clk>),                                   //                                  clk.clk
-        .pixelstream_0_conduit_end_0_lcd_red       (<connected-to-pixelstream_0_conduit_end_0_lcd_red>),       //          pixelstream_0_conduit_end_0.lcd_red
-        .pixelstream_0_conduit_end_0_lcd_green     (<connected-to-pixelstream_0_conduit_end_0_lcd_green>),     //                                     .lcd_green
-        .pixelstream_0_conduit_end_0_lcd_blue      (<connected-to-pixelstream_0_conduit_end_0_lcd_blue>),      //                                     .lcd_blue
-        .pixelstream_0_conduit_end_0_lcd_hsync     (<connected-to-pixelstream_0_conduit_end_0_lcd_hsync>),     //                                     .lcd_hsync
-        .pixelstream_0_conduit_end_0_lcd_vsync     (<connected-to-pixelstream_0_conduit_end_0_lcd_vsync>),     //                                     .lcd_vsync
-        .pixelstream_0_conduit_end_0_lcd_de        (<connected-to-pixelstream_0_conduit_end_0_lcd_de>),        //                                     .lcd_de
-        .pixelstream_0_conduit_end_0_lcd_dclk      (<connected-to-pixelstream_0_conduit_end_0_lcd_dclk>),      //                                     .lcd_dclk
-        .pixelstream_0_conduit_end_0_lcd_dclk_en   (<connected-to-pixelstream_0_conduit_end_0_lcd_dclk_en>),   //                                     .lcd_dclk_en
-        .reset_reset_n                             (<connected-to-reset_reset_n>),                             //                                reset.reset_n
-        .splitter_right_cond_in_export             (<connected-to-splitter_right_cond_in_export>),             //               splitter_right_cond_in.export
-        .splitter_left_cond_in_export              (<connected-to-splitter_left_cond_in_export>),              //                splitter_left_cond_in.export
-        .out_leds_external_connection_export       (<connected-to-out_leds_external_connection_export>),       //         out_leds_external_connection.export
-        .out_hex_external_connection_export        (<connected-to-out_hex_external_connection_export>),        //          out_hex_external_connection.export
-        .in_left_dial_external_connection_export   (<connected-to-in_left_dial_external_connection_export>),   //     in_left_dial_external_connection.export
-        .in_right_dial_external_connection_export  (<connected-to-in_right_dial_external_connection_export>),  //    in_right_dial_external_connection.export
-        .in_buttons_external_connection_export     (<connected-to-in_buttons_external_connection_export>),     //       in_buttons_external_connection.export
-        .eightbitstosevenseg_left_1_led_pins_led0  (<connected-to-eightbitstosevenseg_left_1_led_pins_led0>),  //  eightbitstosevenseg_left_1_led_pins.led0
-        .eightbitstosevenseg_left_1_led_pins_led1  (<connected-to-eightbitstosevenseg_left_1_led_pins_led1>),  //                                     .led1
-        .eightbitstosevenseg_left_2_led_pins_led0  (<connected-to-eightbitstosevenseg_left_2_led_pins_led0>),  //  eightbitstosevenseg_left_2_led_pins.led0
-        .eightbitstosevenseg_left_2_led_pins_led1  (<connected-to-eightbitstosevenseg_left_2_led_pins_led1>),  //                                     .led1
-        .eightbitstosevenseg_left_3_led_pins_led0  (<connected-to-eightbitstosevenseg_left_3_led_pins_led0>),  //  eightbitstosevenseg_left_3_led_pins.led0
-        .eightbitstosevenseg_left_3_led_pins_led1  (<connected-to-eightbitstosevenseg_left_3_led_pins_led1>),  //                                     .led1
-        .eightbitstosevenseg_right_1_led_pins_led0 (<connected-to-eightbitstosevenseg_right_1_led_pins_led0>), // eightbitstosevenseg_right_1_led_pins.led0
-        .eightbitstosevenseg_right_1_led_pins_led1 (<connected-to-eightbitstosevenseg_right_1_led_pins_led1>), //                                     .led1
-        .eightbitstosevenseg_right_2_led_pins_led0 (<connected-to-eightbitstosevenseg_right_2_led_pins_led0>), // eightbitstosevenseg_right_2_led_pins.led0
-        .eightbitstosevenseg_right_2_led_pins_led1 (<connected-to-eightbitstosevenseg_right_2_led_pins_led1>), //                                     .led1
-        .eightbitstosevenseg_right_3_led_pins_led0 (<connected-to-eightbitstosevenseg_right_3_led_pins_led0>), // eightbitstosevenseg_right_3_led_pins.led0
-        .eightbitstosevenseg_right_3_led_pins_led1 (<connected-to-eightbitstosevenseg_right_3_led_pins_led1>)  //                                     .led1
+        .shiftregctl_0_shiftreg_ext_shiftreg_clk   (<connected-to-shiftregctl_0_shiftreg_ext_shiftreg_clk>),   //    shiftregctl_0_shiftreg_ext.shiftreg_clk
+        .shiftregctl_0_shiftreg_ext_shiftreg_loadn (<connected-to-shiftregctl_0_shiftreg_ext_shiftreg_loadn>), //                              .shiftreg_loadn
+        .shiftregctl_0_shiftreg_ext_shiftreg_out   (<connected-to-shiftregctl_0_shiftreg_ext_shiftreg_out>),   //                              .shiftreg_out
+        .rotary_left_rotary_in_rotary_in           (<connected-to-rotary_left_rotary_in_rotary_in>),           //         rotary_left_rotary_in.rotary_in
+        .rotary_left_rotary_event_rotary_cw        (<connected-to-rotary_left_rotary_event_rotary_cw>),        //      rotary_left_rotary_event.rotary_cw
+        .rotary_left_rotary_event_rotary_ccw       (<connected-to-rotary_left_rotary_event_rotary_ccw>),       //                              .rotary_ccw
+        .rotary_right_rotary_in_rotary_in          (<connected-to-rotary_right_rotary_in_rotary_in>),          //        rotary_right_rotary_in.rotary_in
+        .rotary_right_rotary_event_rotary_cw       (<connected-to-rotary_right_rotary_event_rotary_cw>),       //     rotary_right_rotary_event.rotary_cw
+        .rotary_right_rotary_event_rotary_ccw      (<connected-to-rotary_right_rotary_event_rotary_ccw>)       //                              .rotary_ccw
+    );*/
+
+
+
+    clarvi_soc u0 (
+        //.buttons_pio_external_connection_export   (<connected-to-buttons_pio_external_connection_export>),   //   buttons_pio_external_connection.export
+        .clk_clk                                  (CLOCK_50),                                  //                               clk.clk
+        .hex_converter_0_conduit_out_1_readdata   (HEX0),   //     hex_converter_0_conduit_out_1.readdata
+        .hex_converter_0_conduit_out_2_readdata   (HEX1),   //     hex_converter_0_conduit_out_2.readdata
+        .hex_converter_0_conduit_out_3_readdata   (HEX2),   //     hex_converter_0_conduit_out_3.readdata
+        .hex_converter_0_conduit_out_4_readdata   (HEX3),   //     hex_converter_0_conduit_out_4.readdata
+        .hex_converter_0_conduit_out_5_readdata   (HEX4),   //     hex_converter_0_conduit_out_5.readdata
+        .hex_converter_0_conduit_out_6_readdata   (HEX5),   //     hex_converter_0_conduit_out_6.readdata
+	.hex_converter_0_conduit_in_conduit       (hex_cond),       //        hex_converter_0_conduit_in.conduit
+        .hex_pio_external_connection_export       (hex_cond), 
+        .led_pio_external_connection_export       (LEDR),       //       led_pio_external_connection.export
+        //.leftdial_pio_external_connection_export  (<connected-to-leftdial_pio_external_connection_export>),  //  leftdial_pio_external_connection.export
+	.pixelstream_0_conduit_end_0_lcd_red   (LCD_R),   // pixelstream_0_conduit_end_0.lcd_red
+        .pixelstream_0_conduit_end_0_lcd_green (LCD_G), //                            .lcd_green
+        .pixelstream_0_conduit_end_0_lcd_blue  (LCD_B),  //                            .lcd_blue
+        .pixelstream_0_conduit_end_0_lcd_hsync (LCD_HSYNC), //                            .lcd_hsync
+        .pixelstream_0_conduit_end_0_lcd_vsync (LCD_VSYNC), //                            .lcd_vsync
+        .pixelstream_0_conduit_end_0_lcd_de    (LCD_DEN),    //                            .lcd_de
+        .pixelstream_0_conduit_end_0_lcd_dclk    (LCD_DCLK),    //                            .lcd_dclk
+        //.pixelstream_0_conduit_end_0_lcd_dclk_en  (<connected-to-pixelstream_0_conduit_end_0_lcd_dclk_en>),  //                                  .lcd_dclk_en
+        .reset_reset_n                            (KEY[0]),                            //                             reset.reset_n
+        //.rightdial_pio_external_connection_export (<connected-to-rightdial_pio_external_connection_export>)  // rightdial_pio_external_connection.export
+	.shiftregctl_0_shiftreg_ext_shiftreg_clk   (SHIFT_CLKIN),   //    shiftregctl_0_shiftreg_ext.shiftreg_clk
+        .shiftregctl_0_shiftreg_ext_shiftreg_loadn (SHIFT_LOAD), //                              .shiftreg_loadn
+        .shiftregctl_0_shiftreg_ext_shiftreg_out   (SHIFT_OUT),   //                              .shiftreg_out
+        .rotary_left_rotary_in_rotary_in           (DIALL),           //         rotary_left_rotary_in.rotary_in
+        //.rotary_left_rotary_event_rotary_cw        (<connected-to-rotary_left_rotary_event_rotary_cw>),        //      rotary_left_rotary_event.rotary_cw
+        //.rotary_left_rotary_event_rotary_ccw       (<connected-to-rotary_left_rotary_event_rotary_ccw>),       //                              .rotary_ccw
+        .rotary_right_rotary_in_rotary_in          (DIALR),          //        rotary_right_rotary_in.rotary_in
+        //.rotary_right_rotary_event_rotary_cw       (<connected-to-rotary_right_rotary_event_rotary_cw>),       //     rotary_right_rotary_event.rotary_cw
+        //.rotary_right_rotary_event_rotary_ccw      (<connected-to-rotary_right_rotary_event_rotary_ccw>)       //                              .rotary_ccw
     );
-*/
+
 
 
 

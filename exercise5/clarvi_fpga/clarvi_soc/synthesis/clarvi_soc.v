@@ -4,45 +4,41 @@
 
 `timescale 1 ps / 1 ps
 module clarvi_soc (
-		input  wire        clk_clk,                                   //                                  clk.clk
-		output wire [6:0]  eightbitstosevenseg_left_1_led_pins_led0,  //  eightbitstosevenseg_left_1_led_pins.led0
-		output wire [6:0]  eightbitstosevenseg_left_1_led_pins_led1,  //                                     .led1
-		output wire [6:0]  eightbitstosevenseg_left_2_led_pins_led0,  //  eightbitstosevenseg_left_2_led_pins.led0
-		output wire [6:0]  eightbitstosevenseg_left_2_led_pins_led1,  //                                     .led1
-		output wire [6:0]  eightbitstosevenseg_left_3_led_pins_led0,  //  eightbitstosevenseg_left_3_led_pins.led0
-		output wire [6:0]  eightbitstosevenseg_left_3_led_pins_led1,  //                                     .led1
-		output wire [6:0]  eightbitstosevenseg_right_1_led_pins_led0, // eightbitstosevenseg_right_1_led_pins.led0
-		output wire [6:0]  eightbitstosevenseg_right_1_led_pins_led1, //                                     .led1
-		output wire [6:0]  eightbitstosevenseg_right_2_led_pins_led0, // eightbitstosevenseg_right_2_led_pins.led0
-		output wire [6:0]  eightbitstosevenseg_right_2_led_pins_led1, //                                     .led1
-		output wire [6:0]  eightbitstosevenseg_right_3_led_pins_led0, // eightbitstosevenseg_right_3_led_pins.led0
-		output wire [6:0]  eightbitstosevenseg_right_3_led_pins_led1, //                                     .led1
-		input  wire [15:0] in_buttons_external_connection_export,     //       in_buttons_external_connection.export
-		input  wire [7:0]  in_left_dial_external_connection_export,   //     in_left_dial_external_connection.export
-		input  wire [7:0]  in_right_dial_external_connection_export,  //    in_right_dial_external_connection.export
-		output wire [23:0] out_hex_external_connection_export,        //          out_hex_external_connection.export
-		output wire [9:0]  out_leds_external_connection_export,       //         out_leds_external_connection.export
-		output wire [7:0]  pixelstream_0_conduit_end_0_lcd_red,       //          pixelstream_0_conduit_end_0.lcd_red
-		output wire [7:0]  pixelstream_0_conduit_end_0_lcd_green,     //                                     .lcd_green
-		output wire [7:0]  pixelstream_0_conduit_end_0_lcd_blue,      //                                     .lcd_blue
-		output wire        pixelstream_0_conduit_end_0_lcd_hsync,     //                                     .lcd_hsync
-		output wire        pixelstream_0_conduit_end_0_lcd_vsync,     //                                     .lcd_vsync
-		output wire        pixelstream_0_conduit_end_0_lcd_de,        //                                     .lcd_de
-		output wire        pixelstream_0_conduit_end_0_lcd_dclk,      //                                     .lcd_dclk
-		output wire        pixelstream_0_conduit_end_0_lcd_dclk_en,   //                                     .lcd_dclk_en
-		input  wire        reset_reset_n,                             //                                reset.reset_n
-		input  wire [23:0] splitter_left_cond_in_export,              //                splitter_left_cond_in.export
-		input  wire [23:0] splitter_right_cond_in_export              //               splitter_right_cond_in.export
+		input  wire        clk_clk,                                   //                           clk.clk
+		input  wire [23:0] hex_converter_0_conduit_in_conduit,        //    hex_converter_0_conduit_in.conduit
+		output wire [6:0]  hex_converter_0_conduit_out_1_readdata,    // hex_converter_0_conduit_out_1.readdata
+		output wire [6:0]  hex_converter_0_conduit_out_2_readdata,    // hex_converter_0_conduit_out_2.readdata
+		output wire [6:0]  hex_converter_0_conduit_out_3_readdata,    // hex_converter_0_conduit_out_3.readdata
+		output wire [6:0]  hex_converter_0_conduit_out_4_readdata,    // hex_converter_0_conduit_out_4.readdata
+		output wire [6:0]  hex_converter_0_conduit_out_5_readdata,    // hex_converter_0_conduit_out_5.readdata
+		output wire [6:0]  hex_converter_0_conduit_out_6_readdata,    // hex_converter_0_conduit_out_6.readdata
+		output wire [23:0] hex_pio_external_connection_export,        //   hex_pio_external_connection.export
+		output wire [9:0]  led_pio_external_connection_export,        //   led_pio_external_connection.export
+		output wire [7:0]  pixelstream_0_conduit_end_0_lcd_red,       //   pixelstream_0_conduit_end_0.lcd_red
+		output wire [7:0]  pixelstream_0_conduit_end_0_lcd_green,     //                              .lcd_green
+		output wire [7:0]  pixelstream_0_conduit_end_0_lcd_blue,      //                              .lcd_blue
+		output wire        pixelstream_0_conduit_end_0_lcd_hsync,     //                              .lcd_hsync
+		output wire        pixelstream_0_conduit_end_0_lcd_vsync,     //                              .lcd_vsync
+		output wire        pixelstream_0_conduit_end_0_lcd_de,        //                              .lcd_de
+		output wire        pixelstream_0_conduit_end_0_lcd_dclk,      //                              .lcd_dclk
+		output wire        pixelstream_0_conduit_end_0_lcd_dclk_en,   //                              .lcd_dclk_en
+		input  wire        reset_reset_n,                             //                         reset.reset_n
+		output wire        rotary_left_rotary_event_rotary_cw,        //      rotary_left_rotary_event.rotary_cw
+		output wire        rotary_left_rotary_event_rotary_ccw,       //                              .rotary_ccw
+		input  wire [1:0]  rotary_left_rotary_in_rotary_in,           //         rotary_left_rotary_in.rotary_in
+		output wire        rotary_right_rotary_event_rotary_cw,       //     rotary_right_rotary_event.rotary_cw
+		output wire        rotary_right_rotary_event_rotary_ccw,      //                              .rotary_ccw
+		input  wire [1:0]  rotary_right_rotary_in_rotary_in,          //        rotary_right_rotary_in.rotary_in
+		output wire        shiftregctl_0_shiftreg_ext_shiftreg_clk,   //    shiftregctl_0_shiftreg_ext.shiftreg_clk
+		output wire        shiftregctl_0_shiftreg_ext_shiftreg_loadn, //                              .shiftreg_loadn
+		input  wire        shiftregctl_0_shiftreg_ext_shiftreg_out    //                              .shiftreg_out
 	);
 
-	wire         pll_outclk0_clk;                                              // pll:outclk_0 -> [EightBitsToSevenSeg_left_1:clock, EightBitsToSevenSeg_left_2:clock, EightBitsToSevenSeg_left_3:clock, EightBitsToSevenSeg_right_1:clock, EightBitsToSevenSeg_right_2:clock, EightBitsToSevenSeg_right_3:clock, PixelStream_0:csi_clockreset_clk, clarvi_0:clock, in_buttons:clk, in_left_dial:clk, in_right_dial:clk, mm_interconnect_0:pll_outclk0_clk, mm_interconnect_1:pll_outclk0_clk, onchip_memory2_0:clk, onchip_memory2_0:clk2, out_hex:clk, out_leds:clk, rst_controller:clk, video_memory:clk]
+	wire         pll_outclk0_clk;                                              // pll:outclk_0 -> [PixelStream_0:csi_clockreset_clk, ShiftRegCtl_0:clock_50m, buttons_pio:clk, clarvi_0:clock, hex_converter_0:clock, hex_pio:clk, led_pio:clk, leftdial_pio:clk, mm_interconnect_0:pll_outclk0_clk, mm_interconnect_1:pll_outclk0_clk, onchip_memory2_0:clk, onchip_memory2_0:clk2, rightdial_pio:clk, rotary_left:clk, rotary_right:clk, rst_controller:clk, video_memory:clk]
 	wire         pll_outclk1_clk;                                              // pll:outclk_1 -> PixelStream_0:csi_video_clk
-	wire   [7:0] splitter_right_cond_out1_export;                              // splitter_right:o1 -> EightBitsToSevenSeg_right_1:hexval
-	wire   [7:0] splitter_left_cond_out1_export;                               // splitter_left:o1 -> EightBitsToSevenSeg_left_1:hexval
-	wire   [7:0] splitter_left_cond_out2_export;                               // splitter_left:o2 -> EightBitsToSevenSeg_left_2:hexval
-	wire   [7:0] splitter_right_cond_out2_export;                              // splitter_right:o2 -> EightBitsToSevenSeg_right_2:hexval
-	wire   [7:0] splitter_left_cond_out3_export;                               // splitter_left:o3 -> EightBitsToSevenSeg_left_3:hexval
-	wire   [7:0] splitter_right_cond_out3_export;                              // splitter_right:o3 -> EightBitsToSevenSeg_right_3:hexval
+	wire  [15:0] shiftregctl_0_buttons_export;                                 // ShiftRegCtl_0:buttons -> buttons_pio:in_port
+	wire   [7:0] rotary_right_rotary_pos_export;                               // rotary_right:rotary_pos -> rightdial_pio:in_port
+	wire   [7:0] rotary_left_rotary_pos_export;                                // rotary_left:rotary_pos -> leftdial_pio:in_port
 	wire  [31:0] clarvi_0_instr_readdata;                                      // mm_interconnect_0:clarvi_0_instr_readdata -> clarvi_0:avm_instr_readdata
 	wire         clarvi_0_instr_waitrequest;                                   // mm_interconnect_0:clarvi_0_instr_waitrequest -> clarvi_0:avm_instr_waitrequest
 	wire  [13:0] clarvi_0_instr_address;                                       // clarvi_0:avm_instr_address -> mm_interconnect_0:clarvi_0_instr_address
@@ -70,17 +66,6 @@ module clarvi_soc (
 	wire         pixelstream_0_master_burstreads_readdatavalid;                // mm_interconnect_1:PixelStream_0_master_burstreads_readdatavalid -> PixelStream_0:avm_m0_readdatavalid
 	wire  [31:0] pixelstream_0_master_burstreads_writedata;                    // PixelStream_0:avm_m0_writedata -> mm_interconnect_1:PixelStream_0_master_burstreads_writedata
 	wire         pixelstream_0_master_burstreads_write;                        // PixelStream_0:avm_m0_write -> mm_interconnect_1:PixelStream_0_master_burstreads_write
-	wire         mm_interconnect_1_out_hex_s1_chipselect;                      // mm_interconnect_1:out_hex_s1_chipselect -> out_hex:chipselect
-	wire  [31:0] mm_interconnect_1_out_hex_s1_readdata;                        // out_hex:readdata -> mm_interconnect_1:out_hex_s1_readdata
-	wire   [1:0] mm_interconnect_1_out_hex_s1_address;                         // mm_interconnect_1:out_hex_s1_address -> out_hex:address
-	wire         mm_interconnect_1_out_hex_s1_write;                           // mm_interconnect_1:out_hex_s1_write -> out_hex:write_n
-	wire  [31:0] mm_interconnect_1_out_hex_s1_writedata;                       // mm_interconnect_1:out_hex_s1_writedata -> out_hex:writedata
-	wire  [31:0] mm_interconnect_1_in_left_dial_s1_readdata;                   // in_left_dial:readdata -> mm_interconnect_1:in_left_dial_s1_readdata
-	wire   [1:0] mm_interconnect_1_in_left_dial_s1_address;                    // mm_interconnect_1:in_left_dial_s1_address -> in_left_dial:address
-	wire  [31:0] mm_interconnect_1_in_right_dial_s1_readdata;                  // in_right_dial:readdata -> mm_interconnect_1:in_right_dial_s1_readdata
-	wire   [1:0] mm_interconnect_1_in_right_dial_s1_address;                   // mm_interconnect_1:in_right_dial_s1_address -> in_right_dial:address
-	wire  [31:0] mm_interconnect_1_in_buttons_s1_readdata;                     // in_buttons:readdata -> mm_interconnect_1:in_buttons_s1_readdata
-	wire   [1:0] mm_interconnect_1_in_buttons_s1_address;                      // mm_interconnect_1:in_buttons_s1_address -> in_buttons:address
 	wire         mm_interconnect_1_onchip_memory2_0_s1_chipselect;             // mm_interconnect_1:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
 	wire  [31:0] mm_interconnect_1_onchip_memory2_0_s1_readdata;               // onchip_memory2_0:readdata -> mm_interconnect_1:onchip_memory2_0_s1_readdata
 	wire  [13:0] mm_interconnect_1_onchip_memory2_0_s1_address;                // mm_interconnect_1:onchip_memory2_0_s1_address -> onchip_memory2_0:address
@@ -95,11 +80,22 @@ module clarvi_soc (
 	wire         mm_interconnect_1_video_memory_s1_write;                      // mm_interconnect_1:video_memory_s1_write -> video_memory:write
 	wire  [31:0] mm_interconnect_1_video_memory_s1_writedata;                  // mm_interconnect_1:video_memory_s1_writedata -> video_memory:writedata
 	wire         mm_interconnect_1_video_memory_s1_clken;                      // mm_interconnect_1:video_memory_s1_clken -> video_memory:clken
-	wire         mm_interconnect_1_out_leds_s1_chipselect;                     // mm_interconnect_1:out_leds_s1_chipselect -> out_leds:chipselect
-	wire  [31:0] mm_interconnect_1_out_leds_s1_readdata;                       // out_leds:readdata -> mm_interconnect_1:out_leds_s1_readdata
-	wire   [1:0] mm_interconnect_1_out_leds_s1_address;                        // mm_interconnect_1:out_leds_s1_address -> out_leds:address
-	wire         mm_interconnect_1_out_leds_s1_write;                          // mm_interconnect_1:out_leds_s1_write -> out_leds:write_n
-	wire  [31:0] mm_interconnect_1_out_leds_s1_writedata;                      // mm_interconnect_1:out_leds_s1_writedata -> out_leds:writedata
+	wire         mm_interconnect_1_led_pio_s1_chipselect;                      // mm_interconnect_1:led_pio_s1_chipselect -> led_pio:chipselect
+	wire  [31:0] mm_interconnect_1_led_pio_s1_readdata;                        // led_pio:readdata -> mm_interconnect_1:led_pio_s1_readdata
+	wire   [1:0] mm_interconnect_1_led_pio_s1_address;                         // mm_interconnect_1:led_pio_s1_address -> led_pio:address
+	wire         mm_interconnect_1_led_pio_s1_write;                           // mm_interconnect_1:led_pio_s1_write -> led_pio:write_n
+	wire  [31:0] mm_interconnect_1_led_pio_s1_writedata;                       // mm_interconnect_1:led_pio_s1_writedata -> led_pio:writedata
+	wire         mm_interconnect_1_hex_pio_s1_chipselect;                      // mm_interconnect_1:hex_pio_s1_chipselect -> hex_pio:chipselect
+	wire  [31:0] mm_interconnect_1_hex_pio_s1_readdata;                        // hex_pio:readdata -> mm_interconnect_1:hex_pio_s1_readdata
+	wire   [1:0] mm_interconnect_1_hex_pio_s1_address;                         // mm_interconnect_1:hex_pio_s1_address -> hex_pio:address
+	wire         mm_interconnect_1_hex_pio_s1_write;                           // mm_interconnect_1:hex_pio_s1_write -> hex_pio:write_n
+	wire  [31:0] mm_interconnect_1_hex_pio_s1_writedata;                       // mm_interconnect_1:hex_pio_s1_writedata -> hex_pio:writedata
+	wire  [31:0] mm_interconnect_1_rightdial_pio_s1_readdata;                  // rightdial_pio:readdata -> mm_interconnect_1:rightdial_pio_s1_readdata
+	wire   [1:0] mm_interconnect_1_rightdial_pio_s1_address;                   // mm_interconnect_1:rightdial_pio_s1_address -> rightdial_pio:address
+	wire  [31:0] mm_interconnect_1_buttons_pio_s1_readdata;                    // buttons_pio:readdata -> mm_interconnect_1:buttons_pio_s1_readdata
+	wire   [1:0] mm_interconnect_1_buttons_pio_s1_address;                     // mm_interconnect_1:buttons_pio_s1_address -> buttons_pio:address
+	wire  [31:0] mm_interconnect_1_leftdial_pio_s1_readdata;                   // leftdial_pio:readdata -> mm_interconnect_1:leftdial_pio_s1_readdata
+	wire   [1:0] mm_interconnect_1_leftdial_pio_s1_address;                    // mm_interconnect_1:leftdial_pio_s1_address -> leftdial_pio:address
 	wire  [31:0] mm_interconnect_1_pixelstream_0_slave_parameters_readdata;    // PixelStream_0:avs_s0_readdata -> mm_interconnect_1:PixelStream_0_slave_parameters_readdata
 	wire         mm_interconnect_1_pixelstream_0_slave_parameters_waitrequest; // PixelStream_0:avs_s0_waitrequest -> mm_interconnect_1:PixelStream_0_slave_parameters_waitrequest
 	wire   [3:0] mm_interconnect_1_pixelstream_0_slave_parameters_address;     // mm_interconnect_1:PixelStream_0_slave_parameters_address -> PixelStream_0:avs_s0_address
@@ -107,56 +103,8 @@ module clarvi_soc (
 	wire         mm_interconnect_1_pixelstream_0_slave_parameters_write;       // mm_interconnect_1:PixelStream_0_slave_parameters_write -> PixelStream_0:avs_s0_write
 	wire  [31:0] mm_interconnect_1_pixelstream_0_slave_parameters_writedata;   // mm_interconnect_1:PixelStream_0_slave_parameters_writedata -> PixelStream_0:avs_s0_writedata
 	wire         clarvi_0_interrupt_receiver_0_irq;                            // irq_mapper:sender_irq -> clarvi_0:inr_irq
-	wire         rst_controller_reset_out_reset;                               // rst_controller:reset_out -> [EightBitsToSevenSeg_left_1:reset, EightBitsToSevenSeg_left_2:reset, EightBitsToSevenSeg_left_3:reset, EightBitsToSevenSeg_right_1:reset, EightBitsToSevenSeg_right_2:reset, EightBitsToSevenSeg_right_3:reset, PixelStream_0:csi_clockreset_reset_n, clarvi_0:reset, in_buttons:reset_n, in_left_dial:reset_n, in_right_dial:reset_n, mm_interconnect_0:clarvi_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:clarvi_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, onchip_memory2_0:reset2, out_hex:reset_n, out_leds:reset_n, rst_translator:in_reset, video_memory:reset]
+	wire         rst_controller_reset_out_reset;                               // rst_controller:reset_out -> [PixelStream_0:csi_clockreset_reset_n, ShiftRegCtl_0:reset, buttons_pio:reset_n, clarvi_0:reset, hex_converter_0:reset, hex_pio:reset_n, led_pio:reset_n, leftdial_pio:reset_n, mm_interconnect_0:clarvi_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:clarvi_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, onchip_memory2_0:reset2, rightdial_pio:reset_n, rotary_left:rst, rotary_right:rst, rst_translator:in_reset, video_memory:reset]
 	wire         rst_controller_reset_out_reset_req;                           // rst_controller:reset_req -> [onchip_memory2_0:reset_req, onchip_memory2_0:reset_req2, rst_translator:reset_req_in, video_memory:reset_req]
-
-	EightBitsToSevenSeg eightbitstosevenseg_left_1 (
-		.hexval (splitter_left_cond_out1_export),           //  data_in.export
-		.digit0 (eightbitstosevenseg_left_1_led_pins_led0), // led_pins.led0
-		.digit1 (eightbitstosevenseg_left_1_led_pins_led1), //         .led1
-		.reset  (rst_controller_reset_out_reset),           //    reset.reset
-		.clock  (pll_outclk0_clk)                           //    clock.clk
-	);
-
-	EightBitsToSevenSeg eightbitstosevenseg_left_2 (
-		.hexval (splitter_left_cond_out2_export),           //  data_in.export
-		.digit0 (eightbitstosevenseg_left_2_led_pins_led0), // led_pins.led0
-		.digit1 (eightbitstosevenseg_left_2_led_pins_led1), //         .led1
-		.reset  (rst_controller_reset_out_reset),           //    reset.reset
-		.clock  (pll_outclk0_clk)                           //    clock.clk
-	);
-
-	EightBitsToSevenSeg eightbitstosevenseg_left_3 (
-		.hexval (splitter_left_cond_out3_export),           //  data_in.export
-		.digit0 (eightbitstosevenseg_left_3_led_pins_led0), // led_pins.led0
-		.digit1 (eightbitstosevenseg_left_3_led_pins_led1), //         .led1
-		.reset  (rst_controller_reset_out_reset),           //    reset.reset
-		.clock  (pll_outclk0_clk)                           //    clock.clk
-	);
-
-	EightBitsToSevenSeg eightbitstosevenseg_right_1 (
-		.hexval (splitter_right_cond_out1_export),           //  data_in.export
-		.digit0 (eightbitstosevenseg_right_1_led_pins_led0), // led_pins.led0
-		.digit1 (eightbitstosevenseg_right_1_led_pins_led1), //         .led1
-		.reset  (rst_controller_reset_out_reset),            //    reset.reset
-		.clock  (pll_outclk0_clk)                            //    clock.clk
-	);
-
-	EightBitsToSevenSeg eightbitstosevenseg_right_2 (
-		.hexval (splitter_right_cond_out2_export),           //  data_in.export
-		.digit0 (eightbitstosevenseg_right_2_led_pins_led0), // led_pins.led0
-		.digit1 (eightbitstosevenseg_right_2_led_pins_led1), //         .led1
-		.reset  (rst_controller_reset_out_reset),            //    reset.reset
-		.clock  (pll_outclk0_clk)                            //    clock.clk
-	);
-
-	EightBitsToSevenSeg eightbitstosevenseg_right_3 (
-		.hexval (splitter_right_cond_out3_export),           //  data_in.export
-		.digit0 (eightbitstosevenseg_right_3_led_pins_led0), // led_pins.led0
-		.digit1 (eightbitstosevenseg_right_3_led_pins_led1), //         .led1
-		.reset  (rst_controller_reset_out_reset),            //    reset.reset
-		.clock  (pll_outclk0_clk)                            //    clock.clk
-	);
 
 	mkPixelStream pixelstream_0 (
 		.csi_clockreset_clk               (pll_outclk0_clk),                                              //        clockreset.clk
@@ -183,6 +131,23 @@ module clarvi_soc (
 		.coe_hdmi_de                      (pixelstream_0_conduit_end_0_lcd_de),                           //                  .lcd_de
 		.csi_clockreset_clk_coe_hdmi_dclk (pixelstream_0_conduit_end_0_lcd_dclk),                         //                  .lcd_dclk
 		.CLK_GATE_coe_hdmi_dclk           (pixelstream_0_conduit_end_0_lcd_dclk_en)                       //                  .lcd_dclk_en
+	);
+
+	shiftregctl shiftregctl_0 (
+		.reset          (rst_controller_reset_out_reset),            //        reset.reset
+		.clock_50m      (pll_outclk0_clk),                           //   clock_sink.clk
+		.buttons        (shiftregctl_0_buttons_export),              //      buttons.export
+		.shiftreg_clk   (shiftregctl_0_shiftreg_ext_shiftreg_clk),   // shiftreg_ext.shiftreg_clk
+		.shiftreg_loadn (shiftregctl_0_shiftreg_ext_shiftreg_loadn), //             .shiftreg_loadn
+		.shiftreg_out   (shiftregctl_0_shiftreg_ext_shiftreg_out)    //             .shiftreg_out
+	);
+
+	clarvi_soc_buttons_pio buttons_pio (
+		.clk      (pll_outclk0_clk),                           //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_buttons_pio_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_buttons_pio_s1_readdata), //                    .readdata
+		.in_port  (shiftregctl_0_buttons_export)               // external_connection.export
 	);
 
 	clarvi_avalon #(
@@ -212,28 +177,46 @@ module clarvi_soc (
 		.debug_pc                ()                                   //                     .pc
 	);
 
-	clarvi_soc_in_buttons in_buttons (
-		.clk      (pll_outclk0_clk),                          //                 clk.clk
-		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
-		.address  (mm_interconnect_1_in_buttons_s1_address),  //                  s1.address
-		.readdata (mm_interconnect_1_in_buttons_s1_readdata), //                    .readdata
-		.in_port  (in_buttons_external_connection_export)     // external_connection.export
+	split hex_converter_0 (
+		.data  (hex_converter_0_conduit_in_conduit),     //    conduit_in.conduit
+		.o1    (hex_converter_0_conduit_out_1_readdata), // conduit_out_1.readdata
+		.o2    (hex_converter_0_conduit_out_2_readdata), // conduit_out_2.readdata
+		.o3    (hex_converter_0_conduit_out_3_readdata), // conduit_out_3.readdata
+		.reset (~rst_controller_reset_out_reset),        //         reset.reset_n
+		.o4    (hex_converter_0_conduit_out_4_readdata), // conduit_out_4.readdata
+		.o5    (hex_converter_0_conduit_out_5_readdata), // conduit_out_5.readdata
+		.o6    (hex_converter_0_conduit_out_6_readdata), // conduit_out_6.readdata
+		.clock (pll_outclk0_clk)                         //         clock.clk
 	);
 
-	clarvi_soc_in_left_dial in_left_dial (
+	clarvi_soc_hex_pio hex_pio (
+		.clk        (pll_outclk0_clk),                         //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),         //               reset.reset_n
+		.address    (mm_interconnect_1_hex_pio_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_1_hex_pio_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_1_hex_pio_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_1_hex_pio_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_1_hex_pio_s1_readdata),   //                    .readdata
+		.out_port   (hex_pio_external_connection_export)       // external_connection.export
+	);
+
+	clarvi_soc_led_pio led_pio (
+		.clk        (pll_outclk0_clk),                         //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),         //               reset.reset_n
+		.address    (mm_interconnect_1_led_pio_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_1_led_pio_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_1_led_pio_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_1_led_pio_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_1_led_pio_s1_readdata),   //                    .readdata
+		.out_port   (led_pio_external_connection_export)       // external_connection.export
+	);
+
+	clarvi_soc_leftdial_pio leftdial_pio (
 		.clk      (pll_outclk0_clk),                            //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
-		.address  (mm_interconnect_1_in_left_dial_s1_address),  //                  s1.address
-		.readdata (mm_interconnect_1_in_left_dial_s1_readdata), //                    .readdata
-		.in_port  (in_left_dial_external_connection_export)     // external_connection.export
-	);
-
-	clarvi_soc_in_left_dial in_right_dial (
-		.clk      (pll_outclk0_clk),                             //                 clk.clk
-		.reset_n  (~rst_controller_reset_out_reset),             //               reset.reset_n
-		.address  (mm_interconnect_1_in_right_dial_s1_address),  //                  s1.address
-		.readdata (mm_interconnect_1_in_right_dial_s1_readdata), //                    .readdata
-		.in_port  (in_right_dial_external_connection_export)     // external_connection.export
+		.address  (mm_interconnect_1_leftdial_pio_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_leftdial_pio_s1_readdata), //                    .readdata
+		.in_port  (rotary_left_rotary_pos_export)               // external_connection.export
 	);
 
 	clarvi_soc_onchip_memory2_0 onchip_memory2_0 (
@@ -260,28 +243,6 @@ module clarvi_soc (
 		.freeze      (1'b0)                                              // (terminated)
 	);
 
-	clarvi_soc_out_hex out_hex (
-		.clk        (pll_outclk0_clk),                         //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),         //               reset.reset_n
-		.address    (mm_interconnect_1_out_hex_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_1_out_hex_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_1_out_hex_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_1_out_hex_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_1_out_hex_s1_readdata),   //                    .readdata
-		.out_port   (out_hex_external_connection_export)       // external_connection.export
-	);
-
-	clarvi_soc_out_leds out_leds (
-		.clk        (pll_outclk0_clk),                          //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
-		.address    (mm_interconnect_1_out_leds_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_1_out_leds_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_1_out_leds_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_1_out_leds_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_1_out_leds_s1_readdata),   //                    .readdata
-		.out_port   (out_leds_external_connection_export)       // external_connection.export
-	);
-
 	clarvi_soc_pll pll (
 		.refclk   (clk_clk),         //  refclk.clk
 		.rst      (~reset_reset_n),  //   reset.reset
@@ -290,18 +251,30 @@ module clarvi_soc (
 		.locked   ()                 // (terminated)
 	);
 
-	split splitter_left (
-		.data (splitter_left_cond_in_export),   //   cond_in.export
-		.o1   (splitter_left_cond_out1_export), // cond_out1.export
-		.o2   (splitter_left_cond_out2_export), // cond_out2.export
-		.o3   (splitter_left_cond_out3_export)  // cond_out3.export
+	clarvi_soc_leftdial_pio rightdial_pio (
+		.clk      (pll_outclk0_clk),                             //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address  (mm_interconnect_1_rightdial_pio_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_rightdial_pio_s1_readdata), //                    .readdata
+		.in_port  (rotary_right_rotary_pos_export)               // external_connection.export
 	);
 
-	split splitter_right (
-		.data (splitter_right_cond_in_export),   //   cond_in.export
-		.o1   (splitter_right_cond_out1_export), // cond_out1.export
-		.o2   (splitter_right_cond_out2_export), // cond_out2.export
-		.o3   (splitter_right_cond_out3_export)  // cond_out3.export
+	rotary rotary_left (
+		.clk        (pll_outclk0_clk),                     //        clock.clk
+		.rst        (rst_controller_reset_out_reset),      //   reset_sink.reset
+		.rot_cw     (rotary_left_rotary_event_rotary_cw),  // rotary_event.rotary_cw
+		.rot_ccw    (rotary_left_rotary_event_rotary_ccw), //             .rotary_ccw
+		.rotary_in  (rotary_left_rotary_in_rotary_in),     //    rotary_in.rotary_in
+		.rotary_pos (rotary_left_rotary_pos_export)        //   rotary_pos.export
+	);
+
+	rotary rotary_right (
+		.clk        (pll_outclk0_clk),                      //        clock.clk
+		.rst        (rst_controller_reset_out_reset),       //   reset_sink.reset
+		.rot_cw     (rotary_right_rotary_event_rotary_cw),  // rotary_event.rotary_cw
+		.rot_ccw    (rotary_right_rotary_event_rotary_ccw), //             .rotary_ccw
+		.rotary_in  (rotary_right_rotary_in_rotary_in),     //    rotary_in.rotary_in
+		.rotary_pos (rotary_right_rotary_pos_export)        //   rotary_pos.export
 	);
 
 	clarvi_soc_video_memory video_memory (
@@ -353,12 +326,20 @@ module clarvi_soc (
 		.PixelStream_0_master_burstreads_readdatavalid (pixelstream_0_master_burstreads_readdatavalid),                //                                     .readdatavalid
 		.PixelStream_0_master_burstreads_write         (pixelstream_0_master_burstreads_write),                        //                                     .write
 		.PixelStream_0_master_burstreads_writedata     (pixelstream_0_master_burstreads_writedata),                    //                                     .writedata
-		.in_buttons_s1_address                         (mm_interconnect_1_in_buttons_s1_address),                      //                        in_buttons_s1.address
-		.in_buttons_s1_readdata                        (mm_interconnect_1_in_buttons_s1_readdata),                     //                                     .readdata
-		.in_left_dial_s1_address                       (mm_interconnect_1_in_left_dial_s1_address),                    //                      in_left_dial_s1.address
-		.in_left_dial_s1_readdata                      (mm_interconnect_1_in_left_dial_s1_readdata),                   //                                     .readdata
-		.in_right_dial_s1_address                      (mm_interconnect_1_in_right_dial_s1_address),                   //                     in_right_dial_s1.address
-		.in_right_dial_s1_readdata                     (mm_interconnect_1_in_right_dial_s1_readdata),                  //                                     .readdata
+		.buttons_pio_s1_address                        (mm_interconnect_1_buttons_pio_s1_address),                     //                       buttons_pio_s1.address
+		.buttons_pio_s1_readdata                       (mm_interconnect_1_buttons_pio_s1_readdata),                    //                                     .readdata
+		.hex_pio_s1_address                            (mm_interconnect_1_hex_pio_s1_address),                         //                           hex_pio_s1.address
+		.hex_pio_s1_write                              (mm_interconnect_1_hex_pio_s1_write),                           //                                     .write
+		.hex_pio_s1_readdata                           (mm_interconnect_1_hex_pio_s1_readdata),                        //                                     .readdata
+		.hex_pio_s1_writedata                          (mm_interconnect_1_hex_pio_s1_writedata),                       //                                     .writedata
+		.hex_pio_s1_chipselect                         (mm_interconnect_1_hex_pio_s1_chipselect),                      //                                     .chipselect
+		.led_pio_s1_address                            (mm_interconnect_1_led_pio_s1_address),                         //                           led_pio_s1.address
+		.led_pio_s1_write                              (mm_interconnect_1_led_pio_s1_write),                           //                                     .write
+		.led_pio_s1_readdata                           (mm_interconnect_1_led_pio_s1_readdata),                        //                                     .readdata
+		.led_pio_s1_writedata                          (mm_interconnect_1_led_pio_s1_writedata),                       //                                     .writedata
+		.led_pio_s1_chipselect                         (mm_interconnect_1_led_pio_s1_chipselect),                      //                                     .chipselect
+		.leftdial_pio_s1_address                       (mm_interconnect_1_leftdial_pio_s1_address),                    //                      leftdial_pio_s1.address
+		.leftdial_pio_s1_readdata                      (mm_interconnect_1_leftdial_pio_s1_readdata),                   //                                     .readdata
 		.onchip_memory2_0_s1_address                   (mm_interconnect_1_onchip_memory2_0_s1_address),                //                  onchip_memory2_0_s1.address
 		.onchip_memory2_0_s1_write                     (mm_interconnect_1_onchip_memory2_0_s1_write),                  //                                     .write
 		.onchip_memory2_0_s1_readdata                  (mm_interconnect_1_onchip_memory2_0_s1_readdata),               //                                     .readdata
@@ -366,22 +347,14 @@ module clarvi_soc (
 		.onchip_memory2_0_s1_byteenable                (mm_interconnect_1_onchip_memory2_0_s1_byteenable),             //                                     .byteenable
 		.onchip_memory2_0_s1_chipselect                (mm_interconnect_1_onchip_memory2_0_s1_chipselect),             //                                     .chipselect
 		.onchip_memory2_0_s1_clken                     (mm_interconnect_1_onchip_memory2_0_s1_clken),                  //                                     .clken
-		.out_hex_s1_address                            (mm_interconnect_1_out_hex_s1_address),                         //                           out_hex_s1.address
-		.out_hex_s1_write                              (mm_interconnect_1_out_hex_s1_write),                           //                                     .write
-		.out_hex_s1_readdata                           (mm_interconnect_1_out_hex_s1_readdata),                        //                                     .readdata
-		.out_hex_s1_writedata                          (mm_interconnect_1_out_hex_s1_writedata),                       //                                     .writedata
-		.out_hex_s1_chipselect                         (mm_interconnect_1_out_hex_s1_chipselect),                      //                                     .chipselect
-		.out_leds_s1_address                           (mm_interconnect_1_out_leds_s1_address),                        //                          out_leds_s1.address
-		.out_leds_s1_write                             (mm_interconnect_1_out_leds_s1_write),                          //                                     .write
-		.out_leds_s1_readdata                          (mm_interconnect_1_out_leds_s1_readdata),                       //                                     .readdata
-		.out_leds_s1_writedata                         (mm_interconnect_1_out_leds_s1_writedata),                      //                                     .writedata
-		.out_leds_s1_chipselect                        (mm_interconnect_1_out_leds_s1_chipselect),                     //                                     .chipselect
 		.PixelStream_0_slave_parameters_address        (mm_interconnect_1_pixelstream_0_slave_parameters_address),     //       PixelStream_0_slave_parameters.address
 		.PixelStream_0_slave_parameters_write          (mm_interconnect_1_pixelstream_0_slave_parameters_write),       //                                     .write
 		.PixelStream_0_slave_parameters_read           (mm_interconnect_1_pixelstream_0_slave_parameters_read),        //                                     .read
 		.PixelStream_0_slave_parameters_readdata       (mm_interconnect_1_pixelstream_0_slave_parameters_readdata),    //                                     .readdata
 		.PixelStream_0_slave_parameters_writedata      (mm_interconnect_1_pixelstream_0_slave_parameters_writedata),   //                                     .writedata
 		.PixelStream_0_slave_parameters_waitrequest    (mm_interconnect_1_pixelstream_0_slave_parameters_waitrequest), //                                     .waitrequest
+		.rightdial_pio_s1_address                      (mm_interconnect_1_rightdial_pio_s1_address),                   //                     rightdial_pio_s1.address
+		.rightdial_pio_s1_readdata                     (mm_interconnect_1_rightdial_pio_s1_readdata),                  //                                     .readdata
 		.video_memory_s1_address                       (mm_interconnect_1_video_memory_s1_address),                    //                      video_memory_s1.address
 		.video_memory_s1_write                         (mm_interconnect_1_video_memory_s1_write),                      //                                     .write
 		.video_memory_s1_readdata                      (mm_interconnect_1_video_memory_s1_readdata),                   //                                     .readdata

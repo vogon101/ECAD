@@ -1,17 +1,33 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst clarvi_soc.clk_50 -pg 1 -lvl 1 -y 30
-preplace inst clarvi_soc.video_memory -pg 1 -lvl 4 -y 30
+preplace inst clarvi_soc.led_pio -pg 1 -lvl 4 -y 570
+preplace inst clarvi_soc.leftdial_pio -pg 1 -lvl 4 -y 670
+preplace inst clarvi_soc.clk_50 -pg 1 -lvl 1 -y 270
+preplace inst clarvi_soc.video_memory -pg 1 -lvl 4 -y 270
+preplace inst clarvi_soc.hex_pio -pg 1 -lvl 4 -y 170
+preplace inst clarvi_soc.hex_converter_0 -pg 1 -lvl 1 -y 910
+preplace inst clarvi_soc.clarvi_0 -pg 1 -lvl 3 -y 470
+preplace inst clarvi_soc.buttons_pio -pg 1 -lvl 4 -y 870
 preplace inst clarvi_soc -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst clarvi_soc.pll -pg 1 -lvl 2 -y 30
-preplace inst clarvi_soc.PixelStream_0 -pg 1 -lvl 3 -y 70
-preplace netloc FAN_OUT<net_container>clarvi_soc</net_container>(MASTER)clk_50.clk_reset,(SLAVE)pll.reset,(SLAVE)PixelStream_0.clockreset_reset,(SLAVE)video_memory.reset1) 1 1 3 390 100 570 60 NJ
-preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)PixelStream_0.conduit_end_0,(SLAVE)clarvi_soc.pixelstream_0_conduit_end_0) 1 0 3 NJ 120 NJ 120 NJ
-preplace netloc FAN_OUT<net_container>clarvi_soc</net_container>(MASTER)pll.outclk0,(SLAVE)PixelStream_0.clockreset,(SLAVE)video_memory.clk1) 1 2 2 590 40 NJ
-preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)clarvi_soc.reset,(SLAVE)clk_50.clk_in_reset) 1 0 1 NJ
-preplace netloc POINT_TO_POINT<net_container>clarvi_soc</net_container>(MASTER)PixelStream_0.master_burstreads,(SLAVE)video_memory.s1) 1 3 1 850
-preplace netloc POINT_TO_POINT<net_container>clarvi_soc</net_container>(SLAVE)PixelStream_0.video,(MASTER)pll.outclk1) 1 2 1 550
+preplace inst clarvi_soc.rightdial_pio -pg 1 -lvl 4 -y 770
+preplace inst clarvi_soc.pll -pg 1 -lvl 2 -y 270
+preplace inst clarvi_soc.onchip_memory2_0 -pg 1 -lvl 4 -y 30
+preplace inst clarvi_soc.PixelStream_0 -pg 1 -lvl 3 -y 310
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)clarvi_soc.rightdial_pio_external_connection,(SLAVE)rightdial_pio.external_connection) 1 0 4 NJ 800 NJ 800 NJ 800 NJ
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)hex_pio.external_connection,(SLAVE)clarvi_soc.hex_pio_external_connection) 1 0 4 NJ 560 NJ 560 NJ 560 NJ
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)PixelStream_0.conduit_end_0,(SLAVE)clarvi_soc.pixelstream_0_conduit_end_0) 1 0 3 NJ 360 NJ 360 NJ
+preplace netloc FAN_OUT<net_container>clarvi_soc</net_container>(SLAVE)PixelStream_0.clockreset_reset,(SLAVE)led_pio.reset,(SLAVE)hex_pio.reset,(SLAVE)pll.reset,(SLAVE)onchip_memory2_0.reset2,(MASTER)clk_50.clk_reset,(SLAVE)buttons_pio.reset,(SLAVE)clarvi_0.reset,(SLAVE)rightdial_pio.reset,(SLAVE)leftdial_pio.reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)video_memory.reset1) 1 1 3 420 340 620 460 960
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)buttons_pio.external_connection,(SLAVE)clarvi_soc.buttons_pio_external_connection) 1 0 4 NJ 900 NJ 900 NJ 900 NJ
+preplace netloc INTERCONNECT<net_container>clarvi_soc</net_container>(SLAVE)hex_pio.s1,(SLAVE)leftdial_pio.s1,(SLAVE)onchip_memory2_0.s1,(MASTER)PixelStream_0.master_burstreads,(SLAVE)led_pio.s1,(MASTER)clarvi_0.main,(SLAVE)PixelStream_0.slave_parameters,(SLAVE)video_memory.s1,(SLAVE)rightdial_pio.s1,(SLAVE)buttons_pio.s1) 1 2 2 640 580 920
+preplace netloc FAN_OUT<net_container>clarvi_soc</net_container>(SLAVE)hex_pio.clk,(SLAVE)onchip_memory2_0.clk2,(SLAVE)PixelStream_0.clockreset,(SLAVE)rightdial_pio.clk,(SLAVE)video_memory.clk1,(SLAVE)clarvi_0.clock,(MASTER)pll.outclk0,(SLAVE)leftdial_pio.clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)led_pio.clk,(SLAVE)buttons_pio.clk) 1 2 2 600 440 940
+preplace netloc POINT_TO_POINT<net_container>clarvi_soc</net_container>(MASTER)pll.outclk1,(SLAVE)PixelStream_0.video) 1 2 1 580
+preplace netloc POINT_TO_POINT<net_container>clarvi_soc</net_container>(SLAVE)onchip_memory2_0.s2,(MASTER)clarvi_0.instr) 1 3 1 900
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)clarvi_soc.hex_converter_0_conduit_out,(SLAVE)hex_converter_0.conduit_out) 1 0 1 NJ
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)hex_converter_0.conduit_in,(SLAVE)clarvi_soc.hex_converter_0_conduit_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)leftdial_pio.external_connection,(SLAVE)clarvi_soc.leftdial_pio_external_connection) 1 0 4 NJ 700 NJ 700 NJ 700 NJ
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)led_pio.external_connection,(SLAVE)clarvi_soc.led_pio_external_connection) 1 0 4 NJ 600 NJ 600 NJ 600 NJ
+preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)clk_50.clk_in_reset,(SLAVE)clarvi_soc.reset) 1 0 1 NJ
 preplace netloc EXPORT<net_container>clarvi_soc</net_container>(SLAVE)clk_50.clk_in,(SLAVE)clarvi_soc.clk) 1 0 1 NJ
 preplace netloc POINT_TO_POINT<net_container>clarvi_soc</net_container>(MASTER)clk_50.clk,(SLAVE)pll.refclk) 1 1 1 N
-levelinfo -pg 1 0 180 1000
-levelinfo -hier clarvi_soc 190 220 420 620 890 990
+levelinfo -pg 1 0 200 1190
+levelinfo -hier clarvi_soc 210 250 450 670 1030 1180

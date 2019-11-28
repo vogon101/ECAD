@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="255" />
+   <irq preferredWidth="34" />
+   <name preferredWidth="281" />
+   <enabled visible="0" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Project,Library,Library/Processors and Peripherals/Peripherals,Library/Basic Functions/Configuration and Programming,Library/Processors and Peripherals,Library/Basic Functions,Library/Basic Functions/On Chip Memory,Library/University Program,Library/University Program/Generic IO" />
+ <window width="2562" height="1303" x="-1" y="-1" />
+ <hdlexample language="VERILOG" />
+</preferences>
