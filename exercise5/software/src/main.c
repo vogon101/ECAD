@@ -15,8 +15,8 @@
 #define DISPLAY_WIDTH	480
 #define DISPLAY_HEIGHT	272
 
-//#define FABRICATE 
-# define SIMULATE
+#define FABRICATE 
+//#define SIMULATE
 
 void debug_print(int value)
 {
@@ -120,7 +120,6 @@ int main(void)
 		last_left = left;
 		last_right = right;
 
-		//TODO: This may not work in FPGA
 		for (
 			int x = x_position; 
 			(x_position < new_x_position ? x < new_x_position : x > new_x_position); 
